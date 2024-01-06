@@ -1,0 +1,38 @@
+let addButton = document.getElementById("addButton");
+let addProjectItem = document.getElementById("addProjectItem");
+let textProjectName = document.getElementById("projectName");
+let textProjectLink = document.getElementById("projectLink");
+let textArea = document.getElementById("textArea");
+let projectName;
+let projectLink;
+let description;
+textProjectName.onchange = function(event) {
+    projectName = event.target.value;
+};
+textProjectLink.onchange = function(event) {
+    projectLink = event.target.value;
+};
+textArea.onchange = function(event) {
+    description = event.target.value;
+};
+addButton.onclick = function(event) {
+    event.preventDefault();
+    let divElement = document.createElement("div");
+    divElement.classList.add("container-5");
+    let headEle = document.createElement("h1");
+    headEle.textContent = projectName;
+    divElement.appendChild(headEle);
+    let paraEle = document.createElement("p");
+    paraEle.textContent = description;
+    divElement.appendChild(paraEle);
+    let buttonEle = document.createElement("button");
+    buttonEle.classList.add("project-view-button");
+    let hyperEle = document.createElement("a");
+    hyperEle.setAttribute('href', projectLink);
+    hyperEle.textContent = "Project Link";
+    hyperEle.classList.add("attribute");
+    hyperEle.target = "_blank";
+    buttonEle.appendChild(hyperEle);
+    divElement.appendChild(buttonEle);
+    addProjectItem.appendChild(divElement);
+};
